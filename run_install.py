@@ -25,7 +25,7 @@ class Domain:
         self.admin_url = 'http://' + self.name + '/' + self.script_folder + '/admin/'
 
     def create_db(self):
-        command = 'mysql -e "create database ' + self.mysql_name + ' DEFAULT CHARACTER SET utf8 ''DEFAULT COLLATE utf8_general_ci;"'
+        command = 'mysql' + ' --password=' + mysql_pass + ' -e "create database ' + self.mysql_name + ' DEFAULT CHARACTER SET utf8 ''DEFAULT COLLATE utf8_general_ci;"'
         subprocess.call(command, shell=True)
         print(f"DB {self.mysql_name} create!")
 
@@ -33,7 +33,7 @@ class Domain:
         return os.path.isdir(self.dir_to_folder)
 
     def check_mysql(self):
-        command = 'mysql -e "select schema_name from information_schema.schemata where schema_name = \'' + self.mysql_name + '\';"'
+        command = 'mysql'  + ' --password=' + mysql_pass +  ' -e "select schema_name from information_schema.schemata where schema_name = \'' + self.mysql_name + '\';"'
         response = subprocess.check_output(command, shell=True)
         if response != b'':
             return True
