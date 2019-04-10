@@ -1,5 +1,5 @@
-#!/usr/bin/python3.7
 # -*- coding: utf-8 -*-
+
 import os
 import subprocess
 import shutil
@@ -25,10 +25,8 @@ class Domain:
         self.admin_url = 'http://' + self.name + '/' + self.script_folder + '/admin/'
 
     def create_db(self):
-        subprocess.call(
-            'mysql -e "create database ' + self.mysql_name + ' DEFAULT CHARACTER SET utf8 '
-                                                             'DEFAULT COLLATE utf8_general_ci;"',
-            shell=True)
+        command = 'mysql -e "create database ' + self.mysql_name + ' DEFAULT CHARACTER SET utf8 ''DEFAULT COLLATE utf8_general_ci;"'
+        subprocess.call(command, shell=True)
         print(f"DB {self.mysql_name} create!")
 
     def check_folder(self):
@@ -42,13 +40,13 @@ class Domain:
 
     def install_script(self):
         os.chdir(self.dir_to_domain)
-        com = 'curl -sS http://smartcj.com/updates2/install | php -- mysql_host=' + mysql_host + ' mysql_user=' + \
-              mysql_user + ' mysql_pass=' + mysql_pass + ' mysql_name=' + self.mysql_name + ' scj_folder=' + \
-              self.script_folder + ' domain=' + self.name + ' admin_email=' + self.admin_email
+        command = 'curl -sS http://smartcj.com/updates2/install | php -- mysql_host=' + mysql_host + ' mysql_user=' + \
+                  mysql_user + ' mysql_pass=' + mysql_pass + ' mysql_name=' + self.mysql_name + ' scj_folder=' + \
+                  self.script_folder + ' domain=' + self.name + ' admin_email=' + self.admin_email
         time.sleep(3)
-        back_code = subprocess.Popen(com, stdout=subprocess.PIPE, stderr=None, shell=True)
+        back_code = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=None, shell=True)
         try:
-            output = back_code.communicate(timeout=30)
+            output = back_code.communicate(timeout=60)
             message = output[0].decode("utf-8")
             ok_message = message.find("Done, everything's ok")
             if int(ok_message) > 0:
@@ -57,14 +55,14 @@ class Domain:
                 print(f"{self.name} - bad installition! Check log...")
         except:
             print(self.name, 'Timeout expired! Check log...')
-            back_code.kill()
             message = 'Timeout Error;PID:' + str(back_code.pid)
-
-        write_log(info=message, file_to_write='install_script.log')
+        back_code.kill()
+        with open('install_script.log', encoding='UTF-8', mode='w') as file:
+            file.write(message)
 
     def change_password(self):
-        comand = 'htpasswd -bc ' + self.dir_to_admin_folder + '.htpasswd admin ' + pass_to_scj
-        subprocess.Popen(comand, stdout=subprocess.PIPE, stderr=None, shell=True)
+        command = 'htpasswd -bc ' + self.dir_to_admin_folder + '.htpasswd admin ' + pass_to_scj
+        subprocess.Popen(command, stdout=subprocess.PIPE, stderr=None, shell=True)
         print(f"{self.name} - Password change")
 
     def copy_system_file(self):
@@ -74,7 +72,7 @@ class Domain:
         shutil.copyfile(self.dir_to_cgi + file_common, self.dir_to_domain + file_common)
         print(f"{self.name} - {file_index} and {file_common} were copied")
 
-    def create_log(self):
+    def create_admin_info(self):
         with open(admin_dir + '/file/' + '/admin_info.cvs', mode='a+', encoding='utf-8') as admin_file:
             line = self.admin_url + '|' + pass_to_scj + '\n'
             admin_file.write(line)
@@ -89,11 +87,6 @@ class Domain:
             cron_file.write(line)
 
         print(f"{self.name} - cron add!")
-
-
-def write_log(info, file_to_write):
-    with open(file_to_write, encoding='UTF-8', mode='w') as file:
-        file.write(info)
 
 
 def start_install():
@@ -141,7 +134,7 @@ def start_install():
             time.sleep(3)
             domain.change_password()
             time.sleep(3)
-            domain.create_log()
+            domain.create_admin_info()
             time.sleep(3)
             domain.create_sh_file()
             time.sleep(3)
