@@ -62,7 +62,8 @@ class Domain:
 
     def change_password(self):
         command = 'htpasswd -bc ' + self.dir_to_admin_folder + '.htpasswd admin ' + pass_to_scj
-        subprocess.Popen(command, stdout=subprocess.PIPE, stderr=None, shell=True)
+        subprocess.call(command, shell=True)
+
         print(f"{self.name} - Password change")
 
     def copy_system_file(self):
