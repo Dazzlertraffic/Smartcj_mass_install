@@ -12,8 +12,7 @@ Script mass installation cms smarcj.com
 ![screenshot of success install](https://raw.githubusercontent.com/Smith-84/Smartcj_mass_install/master/example.jpg)
 
 # REQUIREMENTS
-python 3.6+</br> 
-root session
+python 3.6+
 
 # Info
 <ul>
