@@ -2,4 +2,5 @@
 Script mass installetion cms smarcj.com
 
 #Getting Started
-$python run_install.py 
+Run:
+python run_install.py 
