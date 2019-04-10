@@ -91,7 +91,7 @@ class Domain:
 
 def start_install():
     print(f"{'*':*^60}")
-    print(f"{'Welcome to auto installer TCMS':*^60}")
+    print(f"{'Welcome to auto installer SmartCJ':*^60}")
     print(f"{'*':*^60}")
     folders = os.listdir(path=base_dir)
     domains = []
