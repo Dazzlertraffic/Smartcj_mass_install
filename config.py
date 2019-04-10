@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 
+# absolute path to domain
 base_dir = ''
+# if domain have public_html folder - True
 public_html = False
+# list of domains to install - ['domain1.com','domain1.com'...]
 included_domain = []
+# list of exclusion domains - ['domain1.com','domain1.com'...]
 excluded_domain = []
+# only local mysql
 mysql_host = 'localhost'
 mysql_user = ''
 mysql_pass = ''
