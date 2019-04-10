@@ -1,4 +1,5 @@
 # Smartcj_mass_install
 Script mass installetion cms smarcj.com
 
-Hi
+#Getting Started
+$python run_install.py 
