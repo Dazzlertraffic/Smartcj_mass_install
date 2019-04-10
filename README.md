@@ -1,11 +1,11 @@
 # Smartcj_mass_install
-Script mass installetion cms smarcj.com
+Script mass installation cms smarcj.com
 
 # Getting Started
 <ul>
 <li>Uploaud run_install.py and config.py to you server</li>  
 <li>Fill config.py</li>  
-<li>Run script: $python run_install.py </li>  
+<li>Run script - $:python run_install.py </li>  
 </ul>
 
 # Example
@@ -16,8 +16,8 @@ python 3.6+
 
 # Info
 <ul>
-<li>All errors you see in console.</li> 
-<li>Log of installition look in 'install_script.log' (will created in domain directory)</li> 
-<li>admin login to smart_cj cms - 'admin'</li> 
-<li>In dir this script after install created folder 'file' include cron files and info('admin_info.cvs', 'cron.sh', 'cron.sh')</li> 
+<li>All errors you will see in console.</li> 
+<li>Log of installation look at 'install_script.log' (will created in domain directory)</li> 
+<li>Admin login to smart_cj cms - 'admin'</li> 
+<li>In an installed directory script will create folder 'file' include cron files and info.('admin_info.cvs', 'cron.sh', 'rotation.sh')</li> 
 <ul>
