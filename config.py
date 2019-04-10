@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# absolute path to domain
+# absolute path to domain - example: /home/admin
 base_dir = ''
 # if domain have public_html folder - True
 public_html = False
