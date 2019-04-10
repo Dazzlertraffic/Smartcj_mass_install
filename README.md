@@ -2,5 +2,6 @@
 Script mass installetion cms smarcj.com
 
 # Getting Started
-Run script: 
-python run_install.py 
+## Uploaud run_install.py and config.py to you server  
+## Fill config.py
+## Run script: $python run_install.py 
