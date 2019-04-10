@@ -3,7 +3,7 @@ Script mass installation cms smarcj.com
 
 # Getting Started
 <ul>
-<li>Uploaud run_install.py and config.py to you server</li>  
+<li>Upload run_install.py and config.py to you server</li>  
 <li>Fill config.py</li>  
 <li>Run script - $:python run_install.py </li>  
 </ul>
