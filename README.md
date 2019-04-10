@@ -5,7 +5,7 @@ Script mass installation cms smarcj.com
 <ul>
 <li>Upload run_install.py and config.py to you server</li>  
 <li>Fill config.py</li>  
-<li>Run script - $:python run_install.py </li>  
+<li>Run script - $:python /PATH_TO_DIR_/run_install.py </li>  
 </ul>
 
 # Example
