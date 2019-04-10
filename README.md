@@ -8,6 +8,7 @@ Script mass installetion cms smarcj.com
 <li>Run script: $python run_install.py </li>  
 </ul>
 
+# Example
 ![screenshot of success install](https://raw.githubusercontent.com/Smith-84/Smartcj_mass_install/master/example.jpg)
 
 # REQUIREMENTS
